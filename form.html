@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Modern Registration Form</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 30px;
+            background: linear-gradient(135deg, #2196f3, #673ab7);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 900px;
+        }
+
+        .heading {
+            text-align: center;
+            color: white;
+            margin-bottom: 25px;
+        }
+
+        .heading h1 {
+            font-size: 38px;
+            margin-bottom: 8px;
+        }
+
+        .form-box {
+            background: white;
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        fieldset {
+            border: 2px solid #673ab7;
+            border-radius: 15px;
+            padding: 25px;
+        }
+
+        legend {
+            font-size: 24px;
+            font-weight: bold;
+            color: #673ab7;
+            padding: 0 10px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .full-width {
+            grid-column: 1 / 3;
+        }
+
+        label {
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: #333;
+        }
+
+        input,
+        select {
+            padding: 13px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        input:focus,
+        select:focus {
+            border-color: #673ab7;
+            box-shadow: 0 0 8px rgba(103, 58, 183, 0.3);
+        }
+
+        .gender {
+            display: flex;
+            gap: 25px;
+            padding-top: 8px;
+        }
+
+        .gender label,
+        .checkbox label {
+            font-weight: normal;
+            cursor: pointer;
+        }
+
+        .checkbox {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .checkbox input {
+            width: 20px;
+            height: 20px;
+        }
+
+        .photo-preview {
+            display: none;
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 4px solid #673ab7;
+            margin-top: 10px;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        button {
+            flex: 1;
+            padding: 14px;
+            border: none;
+            border-radius: 8px;
+            font-size: 17px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #673ab7, #2196f3);
+            color: white;
+        }
+
+        .reset-btn {
+            background: white;
+            color: #e91e63;
+            border: 2px solid #e91e63;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+        }
+
+        .message {
+            display: none;
+            margin-top: 20px;
+            padding: 15px;
+            text-align: center;
+            border-radius: 8px;
+            background: #d4edda;
+            color: #155724;
+            font-weight: bold;
+        }
+
+        @media (max-width: 600px) {
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .full-width {
+                grid-column: auto;
+            }
+
+            .buttons {
+                flex-direction: column;
+            }
+
+            .heading h1 {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="heading">
+            <h1>📝 Registration Form</h1>
+            <p>Fill in your details carefully</p>
+        </div>
+
+        <div class="form-box">
+
+            <form id="registrationForm">
+
+                <fieldset>
+
+                    <legend>Enter Your Information</legend>
+
+                    <div class="form-grid">
+
+                        <!-- Name -->
+                        <div class="input-group">
+                            <label for="name">Full Name *</label>
+                            <input type="text" id="name"
+                                placeholder="Enter your full name" required>
+                        </div>
+
+                        <!-- Email -->
+                        <div class="input-group">
+                            <label for="email">Email ID *</label>
+                            <input type="email" id="email"
+                                placeholder="Enter your email" required>
+                        </div>
+
+                        <!-- Password -->
+                        <div class="input-group">
+                            <label for="password">Password *</label>
+                            <input type="password" id="password"
+                                placeholder="Enter password" required minlength="6">
+                        </div>
+
+                        <!-- Confirm Password -->
+                        <div class="input-group">
+                            <label for="confirmPassword">Confirm Password *</label>
+                            <input type="password" id="confirmPassword"
+                                placeholder="Confirm password" required>
+                        </div>
+
+                        <!-- 18+ -->
+                        <div class="input-group checkbox">
+                            <input type="checkbox" id="age18">
+                            <label for="age18">I am 18 years or older</label>
+                        </div>
+
+                        <!-- Phone -->
+                        <div class="input-group">
+                            <label for="phone">Phone Number *</label>
+                            <input type="tel" id="phone"
+                                placeholder="Enter 10 digit number"
+                                pattern="[0-9]{10}" required>
+                        </div>
+
+                        <!-- Gender -->
+                        <div class="input-group">
+                            <label>Gender *</label>
+
+                            <div class="gender">
+
+                                <div>
+                                    <input type="radio" id="male"
+                                        name="gender" value="Male" required>
+                                    <label for="male">Male</label>
+                                </div>
+
+                                <div>
+                                    <input type="radio" id="female"
+                                        name="gender" value="Female">
+                                    <label for="female">Female</label>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <!-- DOB -->
+                        <div class="input-group">
+                            <label for="dob">Date of Birth *</label>
+                            <input type="date" id="dob" required>
+                        </div>
+
+                        <!-- City -->
+                        <div class="input-group">
+                            <label for="city">Select Your City *</label>
+
+                            <select id="city" required>
+                                <option value="">-- Select City --</option>
+                                <option value="Nagpur">Nagpur</option>
+                                <option value="Delhi">Delhi</option>
+                                <option value="Mumbai">Mumbai</option>
+                                <option value="Kolkata">Kolkata</option>
+                                <option value="Pune">Pune</option>
+                            </select>
+                        </div>
+
+                        <!-- Photo -->
+                        <div class="input-group">
+                            <label for="photo">Upload Photo *</label>
+
+                            <input type="file" id="photo"
+                                accept="image/*" required>
+
+                            <img id="preview" class="photo-preview"
+                                alt="Photo Preview">
+                        </div>
+
+                    </div>
+
+                    <!-- Buttons -->
+                    <div class="buttons">
+                        <button type="submit" class="submit-btn">
+                            SUBMIT
+                        </button>
+
+                        <button type="reset" class="reset-btn">
+                            RESET
+                        </button>
+                    </div>
+
+                    <!-- Success Message -->
+                    <div class="message" id="message">
+                        🎉 Form submitted successfully!
+                    </div>
+
+                </fieldset>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <script>
+
+        // Photo Preview
+        const photo = document.getElementById("photo");
+        const preview = document.getElementById("preview");
+
+        photo.addEventListener("change", function () {
+
+            const file = this.files[0];
+
+            if (file) {
+                preview.src = URL.createObjectURL(file);
+                preview.style.display = "block";
+            }
+
+        });
+
+
+        // Form Submit
+        const form = document.getElementById("registrationForm");
+        const message = document.getElementById("message");
+
+        form.addEventListener("submit", function (event) {
+
+            event.preventDefault();
+
+            const password = document.getElementById("password").value;
+            const confirmPassword =
+                document.getElementById("confirmPassword").value;
+
+            const age18 = document.getElementById("age18").checked;
+
+            // Password Check
+            if (password !== confirmPassword) {
+                alert("❌ Password and Confirm Password do not match!");
+                return;
+            }
+
+            // Age Check
+            if (!age18) {
+                alert("⚠️ Please confirm that you are 18+");
+                return;
+            }
+
+            // Success Message
+            message.style.display = "block";
+
+            alert("🎉 Form submitted successfully!");
+
+        });
+
+
+        // Reset Button - Hide preview and message
+        form.addEventListener("reset", function () {
+
+            setTimeout(function () {
+                preview.style.display = "none";
+                preview.src = "";
+                message.style.display = "none";
+            }, 0);
+
+        });
+
+    </script>
+
+</body>
+
+</html>
